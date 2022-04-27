@@ -1,4 +1,4 @@
-import { BookDTO } from "../../screens/Home";
+import { BookDTO, CategoryProps } from "../../screens/Home";
 import { booksActionTypes } from "../actions/booksActions";
 
 interface Props {
@@ -6,6 +6,8 @@ interface Props {
   loading_fetch_books: boolean;
   error_fetch_books: string;
   books: BookDTO[];
+  category: CategoryProps;
+  search: string;
 }
 
 interface ActionProps extends Props {
@@ -17,7 +19,9 @@ const INITIAL_STATE: Props = {
   is_end: false,
   loading_fetch_books: false,
   error_fetch_books: '',
-  books: []
+  books: [],
+  category: {key: '', title: ''},
+  search: ''
 }
 
 export default (state = INITIAL_STATE, action: ActionProps) => {
@@ -29,7 +33,6 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         error_fetch_books: '',
       };
     case booksActionTypes.FETCH_BOOKS_SUCCESS:
-      console.log('action.payload', action.payload);
       return {
         ...state,
         is_end: action.payload?.length < 15 ? true : false,
@@ -43,6 +46,19 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         loading_fetch_books: false,
         error_fetch_books: action.payload,
       };
+    case booksActionTypes.SET_CATEGORY:
+      return {
+        ...state,
+        category: action.payload,
+        books: []
+      };
+    case booksActionTypes.SET_SEARCH:
+      return {
+        ...state,
+        search: action.payload,
+        books: []
+      };
+    
     default:
       return state;
   }

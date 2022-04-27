@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
@@ -5,9 +6,11 @@ interface Props {
   isLast: boolean;
 }
 
+const { width } = Dimensions.get('window');
+
 export const Container = styled.TouchableOpacity`
-  width: 100%;
-  height: ${RFValue(160)}px;
+  width: ${RFValue(width - 16)}px;
+  height: ${RFValue(180)}px;
   background-color: ${({ theme }) => theme.colors.shape};
   margin-bottom: ${RFValue(16)}px;
   padding: ${RFValue(19)}px ${RFValue(16)}px;
@@ -26,7 +29,7 @@ export const ImageBook = styled.Image`
 
 export const Info = styled.View`
   flex: 1;
-  height: ${RFValue(160)}px;
+  height: ${RFValue(180)}px;
   padding: ${RFValue(19)}px 0;
   justify-content: space-between;
 `;

@@ -1,13 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Dispatch } from "redux";
 import constants from "../../constants";
-import api from "../../services/api";
 
 export const loginActionTypes = {
   CHANGE_EMAIL: 'CHANGE_EMAIL',
   CHANGE_PASSWORD: 'CHANGE_PASSWORD',
   CHANGE_TOKEN: 'CHANGE_TOKEN',
-  CHANGE_IS_LOGGED: 'CHANGE_IS_LOGGED'
+  CHANGE_IS_LOGGED: 'CHANGE_IS_LOGGED',
+  RESET: 'RESET'
 }
 
 export const setEmail = (email: string) => async (dispatch: Dispatch) => {
@@ -27,4 +27,11 @@ export const setToken = (token: string, id: string, refresh: string) => async (d
 
 export const setIsLogged = (isLogged: boolean) => async (dispatch: Dispatch) => {
   dispatch({ type: loginActionTypes.CHANGE_IS_LOGGED, payload: isLogged });
+};
+
+export const logout = () => async (dispatch: Dispatch) => {
+  dispatch({ type: loginActionTypes.RESET });
+  await AsyncStorage.removeItem(constants.asyncStorageUserKey);
+  await AsyncStorage.removeItem(constants.asyncStorageUserId);
+  await AsyncStorage.removeItem(constants.asyncStorageUserRefresh);
 };

@@ -8,7 +8,6 @@ import { BookDTO } from '.';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0 ${RFValue(16)}px;
 `;
 
 export const Logo = styled(LogoSvg)`
@@ -19,7 +18,7 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: ${RFValue(42)}px 0 0;
+  padding: ${RFValue(42)}px ${RFValue(16)}px 0;
 `;
 
 export const Title = styled.View`
@@ -42,8 +41,10 @@ export const Search = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: ${RFValue(32)}px;
-  padding-bottom: ${RFValue(32)}px;
+  padding: 0 ${RFValue(16)}px ${RFValue(32)}px;
 `;
+
+export const FilterButton = styled.TouchableOpacity``;
 
 export const Filter = styled(FilterSvg).attrs({
   width: RFValue(24),
@@ -55,5 +56,6 @@ export const List = styled(
 ) => (FlatList<BookDTO>)).attrs(({ theme }) => ({
   contentContainerStyle: {
     paddingBottom: RFValue(24),
+    alignItems: 'center'
   }
 }))``;

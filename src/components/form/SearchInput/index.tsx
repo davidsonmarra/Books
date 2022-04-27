@@ -10,13 +10,14 @@ import {
 
 interface Props extends TextInputProps {
   name: string;
+  onSubmit: () => void;
 }
 
-export function SearchInput({...rest }: Props) {
+export function SearchInput({ onSubmit, ...rest }: Props) {
   return (
     <Container>
       <FormInput {...rest}/>
-      <SearchButton>
+      <SearchButton onPress={onSubmit}>
         <SearchIcon />
       </SearchButton>
     </Container>

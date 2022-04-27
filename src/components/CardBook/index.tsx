@@ -34,7 +34,7 @@ export function CardBookComponent({ data }: Props) {
         <Footer>
           <InfoDetails>{data.pageCount} páginas</InfoDetails>
           <InfoDetails>{data.publisher}</InfoDetails>
-          <InfoDetails>Publicado em {data.published}</InfoDetails>
+          <InfoDetails>Publicado em {data.category}</InfoDetails>
         </Footer>
       </Info>
     </Container>
