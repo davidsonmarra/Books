@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/global/styles/theme';
 import { SignIn } from './src/screens/SignIn';
+import store from './src/store';
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar
-        style='light'
-        backgroundColor='transparent'
-        translucent
-      />
-      <SignIn />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <StatusBar
+          style='light'
+          backgroundColor='transparent'
+          translucent
+        />
+        <SignIn />
+      </ThemeProvider>
+    </Provider>
   );
 }
 

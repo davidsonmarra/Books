@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Control, Controller } from 'react-hook-form';
-import { TextInputProps } from 'react-native';
-import { IFormInput } from '../../../screens/SignIn';
+import React, { useRef, useState } from 'react';
+import { TextInput, TextInputProps } from 'react-native';
 import { Button } from '../Button';
 import {
   Container,
@@ -10,38 +8,24 @@ import {
 } from './styles';
 
 interface Props extends TextInputProps {
-  control: any;
-  name: keyof IFormInput;
+  name: string;
 }
 
 export function Input({
-  control,
   name,
   placeholder,
   ...rest
 }: Props) {
-
+  const inputRef = useRef<React.Ref<TextInput>>(null);
   return (
-    <Container>
-      <Controller
-        control={control}
-        name={name}
-        render={({ field: { onChange, value }}) => (
-          <>
-            <FormInput
-              onChangeText={onChange}
-              value={value}
-              {...rest}
-            />
-            {
-              name === 'password' && (
-                <Button />
-              )
-            }
-            <Placeholder>{placeholder}</Placeholder>
-          </>
-        )}
-      />
+    <Container >
+      <FormInput ref={inputRef} {...rest} />
+      {
+        name === 'password' && (
+          <Button />
+        )
+      }
+      <Placeholder>{placeholder}</Placeholder>    
     </Container>
   );
 }

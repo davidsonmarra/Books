@@ -11,6 +11,9 @@ import {
   Logo,
   Form
 } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../store';
+import { setEmail, setPassword } from '../../store/actions/loginActions';
 
 export interface IFormInput {
   email: string;
@@ -18,14 +21,12 @@ export interface IFormInput {
 }
 
 export function SignIn() {
-  const background = '../../assets/background.png';
+  const dispatch = useDispatch();
   const {
-    control,
-    reset,
-    handleSubmit,
-  } = useForm<any>({
-    resolver: yupResolver(schema)
-  });
+    email,
+    password,
+  } = useSelector(({ loginReducer }: IRootState) => loginReducer);
+  const background = '../../assets/background.png';
 
   return (
     <Container>
@@ -36,16 +37,19 @@ export function SignIn() {
         </Title>
         <Form>
           <Input 
-            control={control}
             name='email'
             placeholder='Email'
             autoCorrect={false}
+            value={email}
+            onChangeText={(text) => dispatch(setEmail(text))}
           />
           <Input 
-            control={control}
             name='password'
             placeholder='Senha'
+            secureTextEntry
             autoCorrect={false}
+            value={password}
+            onChangeText={(text) => dispatch(setPassword(text))}
           />
         </Form>
       </Image>
