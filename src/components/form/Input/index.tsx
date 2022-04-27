@@ -16,9 +16,9 @@ export function Input({
   placeholder,
   ...rest
 }: Props) {
-  const inputRef = useRef<React.Ref<TextInput>>(null);
+  const inputRef = useRef<TextInput>(null);
   return (
-    <Container >
+    <Container onPress={() => inputRef.current?.focus()}>
       <FormInput ref={inputRef} {...rest} />
       {
         name === 'password' && (

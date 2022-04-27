@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../../../../constants';
 
-const callbackRequest = async (config) => {
+const callbackRequest = async (config: any) => {
   const configuration = config;
   const token = await AsyncStorage.getItem(constants.asyncStorageUserKey);
   if (token) {

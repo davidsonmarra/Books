@@ -4,6 +4,7 @@ interface Props {
   email: string;
   password: string;
   token: string;
+  isLogged: boolean;
 }
 
 interface ActionProps extends Props {
@@ -14,7 +15,8 @@ interface ActionProps extends Props {
 const INITIAL_STATE: Props = {
   email: '',
   password: '',
-  token: ''
+  token: '',
+  isLogged: false
 }
 
 export default (state = INITIAL_STATE, action: ActionProps) => {
@@ -33,6 +35,11 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
       return {
         ...state,
         token: action.payload,
+      };
+    case loginActionTypes.CHANGE_IS_LOGGED:
+      return {
+        ...state,
+        isLogged: action.payload,
       };
     default:
       return state;

@@ -23,16 +23,19 @@ export function Button({}: TouchableOpacityProps) {
     // '12341234'
     setLoading(true);
     Keyboard.dismiss();
+    
     try {
       const { data, headers } = await api.post('/auth/sign-in', {
         email,
         password 
       });
-      dispatch(setToken(headers.authorization, data.id));
+      dispatch(setToken(headers.authorization, data.id, headers['refresh-token']));
+      setLoading(false);
+      dispatch(setIsLogged(true));
     } catch(error: any) {
+      setLoading(false);
       Alert.alert('Algo não funcionou corretamente!', error.response.data.errors.message);
     } finally {
-      setLoading(false);
     }
   }
 

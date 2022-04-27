@@ -1,4 +1,4 @@
-const callbackRequestError = (error) => {
+const callbackRequestError = (error: any) => {
   return Promise.reject(error);
 };
 

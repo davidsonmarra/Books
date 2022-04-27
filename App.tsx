@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
+import { Routes } from './src/components/routes';
 import theme from './src/global/styles/theme';
-import { SignIn } from './src/screens/SignIn';
 import store from './src/store';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
           backgroundColor='transparent'
           translucent
         />
-        <SignIn />
+        <Routes />
       </ThemeProvider>
     </Provider>
   );
