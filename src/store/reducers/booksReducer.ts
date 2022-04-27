@@ -58,7 +58,16 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         search: action.payload,
         books: []
       };
-    
+    case booksActionTypes.RESET:
+      return {
+        ...state,
+        is_end: false,
+        loading_fetch_books: false,
+        error_fetch_books: '',
+        books: [],
+        category: {key: '', title: ''},
+        search: ''
+      };
     default:
       return state;
   }

@@ -15,11 +15,13 @@ import {
 import { SearchInput } from '../../components/form/SearchInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store';
-import { fetchBooks, handleSearchTitle } from '../../store/actions/booksActions';
+import { fetchBooks, handleSearchTitle, reset } from '../../store/actions/booksActions';
 import { CardBook } from '../../components/CardBook';
 import ListFooter from '../../components/ListFooter';
 import { FilterModal } from '../../components/FilterModal';
 import { logout } from '../../store/actions/loginActions';
+import { AuthRootStackParamList } from '../../routes/auth.routes';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export interface BookDTO {
   title: string;
@@ -28,7 +30,11 @@ export interface BookDTO {
   pageCount: number;
   publisher: string;
   published: number;
-  category: CategoryProps;
+  category: CategoryProps | string;
+  language: string;
+  isbn10: string;
+  isbn13: string;
+  description: string
 }
 
 export interface CategoryProps {
@@ -36,7 +42,9 @@ export interface CategoryProps {
   title: string;
 }
 
-export function Home() {
+type Props = NativeStackScreenProps<AuthRootStackParamList, 'Home'>
+
+export function Home({ navigation }: Props) {
   const [searchInput, setSearchInput] = useState('');
   const [offset, setOffset] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
@@ -67,7 +75,12 @@ export function Home() {
   }
 
   function handleLogout() {
-    dispatch(logout())
+    dispatch(logout());
+    dispatch(reset());
+  }
+
+  function handleGoToBookDetails(book: BookDTO) {
+    navigation.navigate('BookDetails', { book });
   }
 
   useEffect(() => {
@@ -103,7 +116,7 @@ export function Home() {
         refreshing={loading_fetch_books}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <CardBook data={item} />
+          <CardBook data={item} handleGoToBookDetails={(book) => handleGoToBookDetails(book)} />
         )}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.5}

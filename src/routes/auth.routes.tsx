@@ -1,9 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home } from '../screens/Home';
+import { BookDTO, Home } from '../screens/Home';
+import BookDetails from '../screens/BookDetails';
 
-export type PublicRootStackParamList = {
+export type AuthRootStackParamList = {
   Home: undefined;
+  BookDetails: { book: BookDTO };
 }
 
 const { Navigator, Screen } = createNativeStackNavigator<PublicRootStackParamList>();
@@ -18,6 +20,10 @@ export function AuthRoutes() {
       <Screen
         name="Home"
         component={Home}
+      />
+      <Screen
+        name="BookDetails"
+        component={BookDetails}
       />
     </Navigator>
   );

@@ -7,7 +7,8 @@ export const booksActionTypes = {
   FETCH_BOOKS_SUCCESS: 'FETCH_BOOKS_SUCCESS',
   FETCH_BOOKS_ERROR: 'FETCH_BOOKS_ERROR',
   SET_CATEGORY: 'SET_CATEGORY',
-  SET_SEARCH: 'SET_SEARCH'
+  SET_SEARCH: 'SET_SEARCH',
+  RESET: 'RESET'
 }
 
 export const fetchBooks = (offset: number, category: CategoryProps, search: string) => async (dispatch: Dispatch) => {
@@ -31,4 +32,8 @@ export const selectCategory = (category: CategoryProps) => async (dispatch: Disp
 
 export const handleSearchTitle = (search: string) => async (dispatch: Dispatch) => {
   dispatch({ type: booksActionTypes.SET_SEARCH, payload: search })
+}
+
+export const reset = () => async (dispatch: Dispatch) => {
+  dispatch({ type: booksActionTypes.RESET })
 }

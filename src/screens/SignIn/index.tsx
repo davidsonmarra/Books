@@ -12,13 +12,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store';
 import { setEmail, setPassword } from '../../store/actions/loginActions';
 import { StatusBar } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { PublicRootStackParamList } from '../../routes/public.routes';
 
 export interface IFormInput {
   email: string;
   password: string;
 }
 
-export function SignIn() {
+type Props = NativeStackScreenProps<PublicRootStackParamList, 'SignIn'>
+
+export function SignIn({}: Props) {
   const dispatch = useDispatch();
   const {
     email,
