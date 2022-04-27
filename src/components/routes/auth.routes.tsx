@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SignIn } from '../../screens/SignIn';
+import { Home } from '../../screens/Home';
 
 export type PublicRootStackParamList = {
   Home: undefined;
@@ -17,7 +17,7 @@ export function AuthRoutes() {
     > 
       <Screen
         name="Home"
-        component={() => <></>}
+        component={Home}
       />
     </Navigator>
   );

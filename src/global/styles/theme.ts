@@ -2,7 +2,9 @@ export default {
   colors: {
     input_background: '#00000052',
     button: '#B22E6F',
-    shape: '#FFFFFF'
+    shape: '#FFFFFF',
+    background: '#E5E5E5',
+    dark: '#333333'
   },
   fonts: {
     regular: 'Poppins_400Regular',

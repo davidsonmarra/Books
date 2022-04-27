@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { schema } from './schema';
+import React from 'react';
 import TitleSvg from '../../assets/title.svg';
 import { Input } from '../../components/form/Input';
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Container,
   Image,
@@ -14,6 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store';
 import { setEmail, setPassword } from '../../store/actions/loginActions';
+import { StatusBar } from 'react-native';
 
 export interface IFormInput {
   email: string;
@@ -30,6 +28,11 @@ export function SignIn() {
 
   return (
     <Container>
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
       <Image source={require(background)}>
         <Title>
           <Logo />
