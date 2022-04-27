@@ -46,6 +46,7 @@ export const BookImage = styled.Image`
 
 export const Title = styled.Text`
   align-self: center;
+  text-align: center;
   color: ${({ theme }) => theme.colors.dark};
   font-size: ${RFValue(28)}px;
   margin-top: ${RFValue(24)}px;
