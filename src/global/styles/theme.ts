@@ -4,7 +4,8 @@ export default {
     button: '#B22E6F',
     shape: '#FFFFFF',
     background: '#E5E5E5',
-    dark: '#333333'
+    dark: '#333333',
+    details: '#999999'
   },
   fonts: {
     regular: 'Poppins_400Regular',

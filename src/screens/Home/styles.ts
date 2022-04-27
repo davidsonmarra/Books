@@ -2,6 +2,8 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import LogoSvg from '../../assets/logo-dark.svg';
 import FilterSvg from '../../assets/filter.svg';
+import { FlatList, FlatListProps } from 'react-native';
+import { BookDTO } from '.';
 
 export const Container = styled.View`
   flex: 1;
@@ -40,9 +42,18 @@ export const Search = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: ${RFValue(32)}px;
+  padding-bottom: ${RFValue(32)}px;
 `;
 
 export const Filter = styled(FilterSvg).attrs({
   width: RFValue(24),
   height: RFValue(24)
 })``;
+
+export const List = styled(
+  FlatList as new (props: FlatListProps<BookDTO>
+) => (FlatList<BookDTO>)).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingBottom: RFValue(24),
+  }
+}))``;

@@ -17,10 +17,10 @@ const createApiService = (
     }
   });
 
-  // api.interceptors.request.use(
-    // (config) => callbackRequest(config),
+  api.interceptors.request.use(
+    (config) => callbackRequest(config),
     // (error) => callbackRequestError(error)
-  // );
+  );
   // api.interceptors.response.use(
   //   (response) => response,
   //   (error) => callbackResponseError(error)
