@@ -13,11 +13,12 @@ import {
 
 interface Props {
   data: BookDTO;
+  handleGoToBookDetails: (book: BookDTO) => void;
 }
 
-export function CardBookComponent({ data }: Props) {
+export function CardBookComponent({ data, handleGoToBookDetails }: Props) {
   return (
-    <Container>
+    <Container onPress={() => handleGoToBookDetails(data)}>
       <ImageBook source={{ uri: data.imageUrl }}/>
       <Info>
         <Header>
