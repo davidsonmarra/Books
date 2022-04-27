@@ -22,6 +22,7 @@ import { FilterModal } from '../../components/FilterModal';
 import { logout } from '../../store/actions/loginActions';
 import { AuthRootStackParamList } from '../../routes/auth.routes';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Keyboard } from 'react-native';
 
 export interface BookDTO {
   id: string;
@@ -66,6 +67,7 @@ export function Home({ navigation }: Props) {
   }
 
   function handleSearch() {
+    Keyboard.dismiss();
     dispatch(handleSearchTitle(searchInput));
     setOffset(1)
     dispatch(fetchBooks(1, category, searchInput));

@@ -8,8 +8,8 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: ${RFValue(44)}px;
-  align-self: flex-end;
-  margin-bottom: ${RFValue(2)}px;
+  align-self: center;
+  margin-right: ${RFValue(16)}px
 `;
 
 export const Loading = styled.ActivityIndicator.attrs(({ theme }) => ({

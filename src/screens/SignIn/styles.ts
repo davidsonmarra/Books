@@ -4,7 +4,7 @@ import LogoSvg from '../../assets/logo.svg';
 
 
 export const Container = styled.View`
-  flex: 1;
+  height: 100%;
 `;
 
 export const Image = styled.ImageBackground`

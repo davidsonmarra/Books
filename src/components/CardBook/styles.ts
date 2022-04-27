@@ -18,7 +18,7 @@ export const Container = styled.TouchableOpacity`
   height: ${RFValue(180)}px;
   background-color: ${({ theme }) => theme.colors.shape};
   margin-bottom: ${RFValue(16)}px;
-  padding: ${RFValue(19)}px ${RFValue(16)}px;
+  padding: ${RFValue(8)}px ${RFValue(16)}px;
   border-radius: ${RFValue(4)}px;
   box-shadow: 0px 6px 24px rgba(84, 16, 95, 0.13);
   flex-direction: row;
@@ -35,7 +35,7 @@ export const ImageBook = styled.Image`
 export const Info = styled.View`
   flex: 1;
   height: ${RFValue(180)}px;
-  padding: ${RFValue(19)}px 0;
+  padding: ${RFValue(16)}px 0;
   justify-content: space-between;
 `;
 

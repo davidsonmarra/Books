@@ -7,7 +7,6 @@ export const Container = styled.TouchableOpacity`
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.input_background};
   border-radius: ${RFValue(4)}px;
-  padding: 0 ${RFValue(16)}px ${RFValue(8)}px;
   justify-content: flex-end;
   margin-bottom: ${RFValue(16)}px;
 `;
@@ -15,6 +14,7 @@ export const Container = styled.TouchableOpacity`
 export const FormInput = styled.TextInput`
   flex: 1;
   color: ${({ theme }) => theme.colors.shape};
+  padding: 0 ${RFValue(16)}px ${RFValue(8)}px;
   align-self: flex-end;
   font-family: ${({ theme }) => theme.fonts.regular};
 `;
