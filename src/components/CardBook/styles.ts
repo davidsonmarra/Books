@@ -8,8 +8,13 @@ interface Props {
 
 const { width } = Dimensions.get('window');
 
+export const Wrapper = styled.View`
+  width: 100%;
+  padding: 0 ${RFValue(16)}px;
+`;
+
 export const Container = styled.TouchableOpacity`
-  width: ${RFValue(width - 16)}px;
+  width: 100%;
   height: ${RFValue(180)}px;
   background-color: ${({ theme }) => theme.colors.shape};
   margin-bottom: ${RFValue(16)}px;
@@ -39,17 +44,19 @@ export const Header = styled.View``;
 export const Title = styled.Text`
   font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.dark};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
 export const Author = styled.Text<Props>`
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.button};
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const Footer = styled.View``;
 
 export const InfoDetails = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.details};
 `;

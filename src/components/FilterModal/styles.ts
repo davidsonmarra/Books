@@ -70,6 +70,7 @@ export const CategoryButton = styled.TouchableOpacity<Props>`
 
 export const CategoryName = styled.Text<Props>`
   font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme, isSelected }) => !isSelected ? theme.colors.dark : theme.colors.shape};
 `;
 
@@ -85,5 +86,5 @@ export const Submit = styled.TouchableOpacity`
 export const SubmitText = styled.Text`
   color: ${({ theme }) => theme.colors.button};
   align-self: center;
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;

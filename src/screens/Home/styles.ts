@@ -53,9 +53,9 @@ export const Filter = styled(FilterSvg).attrs({
 
 export const List = styled(
   FlatList as new (props: FlatListProps<BookDTO>
-) => (FlatList<BookDTO>)).attrs(({ theme }) => ({
+) => (FlatList<BookDTO>)).attrs({
   contentContainerStyle: {
     paddingBottom: RFValue(24),
-    alignItems: 'center'
+    alignItems: 'center',
   }
-}))``;
+})``;

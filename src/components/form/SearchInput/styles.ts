@@ -17,6 +17,7 @@ export const FormInput = styled.TextInput`
   color: ${({ theme }) => theme.colors.shape};
   align-self: flex-end;
   color: ${({ theme }) => theme.colors.dark}
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const SearchIcon = styled(SearchSvg).attrs({
