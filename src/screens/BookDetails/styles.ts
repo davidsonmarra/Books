@@ -49,6 +49,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.dark};
   font-size: ${RFValue(28)}px;
   margin-top: ${RFValue(24)}px;
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
 export const Authors = styled.View`
@@ -61,6 +62,7 @@ export const Author = styled.Text<Props>`
   margin-right: ${({ isLast }) => isLast ? RFValue(4) : 0}px;
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.button};
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const InfoTitle = styled.Text`
@@ -69,6 +71,7 @@ export const InfoTitle = styled.Text`
   margin-bottom: ${RFValue(16)}px;
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.dark};
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
 export const Info = styled.View`
@@ -79,11 +82,13 @@ export const Info = styled.View`
 export const InfoKey = styled.Text`
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.dark};
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
 export const InfoValue = styled.Text`
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.details};
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const Quote = styled(QuoteSvg)`

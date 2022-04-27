@@ -20,6 +20,6 @@ export const Loading = styled.ActivityIndicator.attrs(({ theme }) => ({
 
 export const Title = styled.Text`
   font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.button}
-  font-weight: bold;
+  color: ${({ theme }) => theme.colors.button};
+  font-family: ${({ theme }) => theme.fonts.medium};
 `;

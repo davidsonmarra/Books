@@ -8,9 +8,7 @@ export default {
     details: '#999999'
   },
   fonts: {
-    regular: 'Poppins_400Regular',
-    medium: 'Poppins_500Medium',
-    bold: 'Poppins_700Bold',
-    italic_bold: 'Poppins_700Bold_Italic'
+    regular: 'Heebo_400Regular',
+    medium: 'Heebo_500Medium',
   }
 }

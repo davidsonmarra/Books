@@ -16,6 +16,7 @@ export const FormInput = styled.TextInput`
   flex: 1;
   color: ${({ theme }) => theme.colors.shape};
   align-self: flex-end;
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const Placeholder = styled.Text`
@@ -25,4 +26,5 @@ export const Placeholder = styled.Text`
   top: ${RFValue(8)}px;
   color: ${({ theme }) => theme.colors.shape};
   opacity: .5;
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;

@@ -8,7 +8,8 @@ import {
   ImageBook,
   Info,
   InfoDetails,
-  Title
+  Title,
+  Wrapper
 } from './styles';
 
 interface Props {
@@ -18,27 +19,29 @@ interface Props {
 
 export function CardBookComponent({ data, handleGoToBookDetails }: Props) {
   return (
-    <Container onPress={() => handleGoToBookDetails(data)}>
-      <ImageBook source={{ uri: data.imageUrl }}/>
-      <Info>
-        <Header>
-          <Title>{data.title}</Title>
-          {
-            data.authors?.map((author, index) => (
-              <Author key={author} isLast={index !== data.authors?.length - 1}>
-                {author}
-                {index !== data.authors?.length - 1 && ','}
-              </Author>
-            ))
-          }
-        </Header>
-        <Footer>
-          <InfoDetails>{data.pageCount} páginas</InfoDetails>
-          <InfoDetails>{data.publisher}</InfoDetails>
-          <InfoDetails>Publicado em {data.category}</InfoDetails>
-        </Footer>
-      </Info>
-    </Container>
+    <Wrapper>
+      <Container onPress={() => handleGoToBookDetails(data)}>
+        <ImageBook source={{ uri: data.imageUrl }}/>
+        <Info>
+          <Header>
+            <Title>{data.title}</Title>
+            {
+              data.authors?.map((author, index) => (
+                <Author key={author} isLast={index !== data.authors?.length - 1}>
+                  {author}
+                  {index !== data.authors?.length - 1 && ','}
+                </Author>
+              ))
+            }
+          </Header>
+          <Footer>
+            <InfoDetails>{data.pageCount} páginas</InfoDetails>
+            <InfoDetails>{data.publisher}</InfoDetails>
+            <InfoDetails>Publicado em {data.category}</InfoDetails>
+          </Footer>
+        </Info>
+      </Container>
+    </Wrapper>
   );
 }
 
