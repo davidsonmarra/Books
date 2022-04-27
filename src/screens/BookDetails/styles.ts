@@ -56,6 +56,7 @@ export const Authors = styled.View`
   flex-direction: row;
   justify-content: center;
   margin-bottom: ${RFValue(16)}px;
+  flex-wrap: wrap;
 `;
 
 export const Author = styled.Text<Props>`
