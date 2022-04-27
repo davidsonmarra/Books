@@ -1,8 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
-import { Routes } from './src/components/routes';
+import { Routes } from './src/routes';
 import theme from './src/global/styles/theme';
 import store from './src/store';
 
@@ -11,8 +11,8 @@ export default function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <StatusBar
-          style='light'
-          backgroundColor='transparent'
+          barStyle='dark-content'
+          backgroundColor={theme.colors.background}
           translucent
         />
         <Routes />

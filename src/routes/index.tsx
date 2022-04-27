@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { PublicRoutes } from './public.routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import constants from '../../constants';
-import api from '../../services/api';
+import constants from '../constants';
+import api from '../services/api';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLogged, setToken } from '../../store/actions/loginActions';
-import { IRootState } from '../../store';
+import { setIsLogged, setToken } from '../store/actions/loginActions';
+import { IRootState } from '../store';
 import { AuthRoutes } from './auth.routes';
 
 export function Routes() {

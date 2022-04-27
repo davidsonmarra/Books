@@ -3,7 +3,7 @@ import { Alert, Keyboard, TouchableOpacityProps } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../../services/api';
 import { IRootState } from '../../../store';
-import { setToken } from '../../../store/actions/loginActions';
+import { setIsLogged, setToken } from '../../../store/actions/loginActions';
 import {
   Container,
   Loading,
@@ -35,7 +35,6 @@ export function Button({}: TouchableOpacityProps) {
     } catch(error: any) {
       setLoading(false);
       Alert.alert('Algo não funcionou corretamente!', error.response.data.errors.message);
-    } finally {
     }
   }
 

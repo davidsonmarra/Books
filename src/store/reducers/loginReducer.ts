@@ -41,6 +41,14 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         ...state,
         isLogged: action.payload,
       };
+    case loginActionTypes.RESET:
+      return {
+        ...state,
+        email: '',
+        password: '',
+        token: '',
+        isLogged: false
+      }
     default:
       return state;
   }
