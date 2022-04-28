@@ -30,7 +30,7 @@ export function Routes() {
         dispatch(setToken(headers.authorization, id, headers['refresh-token']));
         dispatch(setIsLogged(true));
       } catch (error) {
-        console.log('error.response', error.response);
+        console.log(error.response);
       }
     }
   }
