@@ -6,25 +6,20 @@ import BookDetails from '../screens/BookDetails';
 export type AuthRootStackParamList = {
   Home: undefined;
   BookDetails: { book: BookDTO };
-}
+};
 
-const { Navigator, Screen } = createNativeStackNavigator<PublicRootStackParamList>();
+const { Navigator, Screen }: any =
+  createNativeStackNavigator<AuthRootStackParamList>();
 
 export function AuthRoutes() {
   return (
     <Navigator
       screenOptions={{
-        headerShown: false
+        headerShown: false,
       }}
-    > 
-      <Screen
-        name="Home"
-        component={Home}
-      />
-      <Screen
-        name="BookDetails"
-        component={BookDetails}
-      />
+    >
+      <Screen name="Home" component={Home} />
+      <Screen name="BookDetails" component={BookDetails} />
     </Navigator>
   );
 }

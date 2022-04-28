@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { configureStore } from '@reduxjs/toolkit'
-import loginReducer from './reducers/loginReducer';
-import booksReducer from './reducers/booksReducer';
+import { configureStore } from '@reduxjs/toolkit';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { useDispatch } from 'react-redux';
+import loginReducer from './reducers/loginReducer';
+import booksReducer from './reducers/booksReducer';
 
 const rootReducer = combineReducers({ loginReducer, booksReducer });
 
@@ -11,7 +11,7 @@ export type IRootState = ReturnType<typeof rootReducer>;
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk]
+  middleware: [thunk],
 });
 
 export default store;

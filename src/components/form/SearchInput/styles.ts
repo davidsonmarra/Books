@@ -22,7 +22,7 @@ export const FormInput = styled.TextInput`
 
 export const SearchIcon = styled(SearchSvg).attrs({
   width: RFValue(24),
-  height: RFValue(24)
+  height: RFValue(24),
 })``;
 
 export const SearchButton = styled.TouchableOpacity`

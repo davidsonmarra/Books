@@ -1,74 +1,74 @@
 export const categories = [
   {
     key: 'biographies',
-    title: 'Biografia'
-  }, 
+    title: 'Biografia',
+  },
   {
     key: 'collections',
-    title: 'Coleções'
+    title: 'Coleções',
   },
   {
     key: 'behavior',
-    title: 'Comportamento'
+    title: 'Comportamento',
   },
   {
     key: 'tales',
-    title: 'Contos'
+    title: 'Contos',
   },
   {
     key: 'literary-criticism',
-    title: 'Crítica Literária'
+    title: 'Crítica Literária',
   },
   {
     key: 'scienceFiction',
-    title: 'Ficção Científica'
+    title: 'Ficção Científica',
   },
   {
     key: 'folklore',
-    title: 'Folclore'
+    title: 'Folclore',
   },
   {
     key: 'genealogy',
-    title: 'Genealogia'
+    title: 'Genealogia',
   },
   {
     key: 'humor',
-    title: 'Humor'
+    title: 'Humor',
   },
   {
     key: 'children',
-    title: 'Infantojuvenis'
+    title: 'Infantojuvenis',
   },
   {
     key: 'games',
-    title: 'Jogos'
+    title: 'Jogos',
   },
   {
     key: 'newspapers',
-    title: 'Jornais'
+    title: 'Jornais',
   },
   {
     key: 'brazilian-literature',
-    title: 'Literatura Brasileira'
+    title: 'Literatura Brasileira',
   },
   {
     key: 'foreign-literature',
-    title: 'Literatura Estrangeira'
+    title: 'Literatura Estrangeira',
   },
   {
     key: 'rare-books',
-    title: 'Livros Raros'
+    title: 'Livros Raros',
   },
   {
     key: 'manuscripts',
-    title: 'Manuscritos'
+    title: 'Manuscritos',
   },
   {
     key: 'poetry',
-    title: 'Poesia'
+    title: 'Poesia',
   },
   {
     key: 'another-subjects',
-    title: 'Outros'
-  }
+    title: 'Outros',
+  },
 ];

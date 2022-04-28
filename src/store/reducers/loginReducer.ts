@@ -1,4 +1,4 @@
-import { loginActionTypes } from "../actions/loginActions";
+import { loginActionTypes } from '../actions/loginActions';
 
 interface Props {
   email: string;
@@ -16,9 +16,10 @@ const INITIAL_STATE: Props = {
   email: '',
   password: '',
   token: '',
-  isLogged: false
-}
+  isLogged: false,
+};
 
+/* eslint default-param-last: [0] */
 export default (state = INITIAL_STATE, action: ActionProps) => {
   switch (action.type) {
     case loginActionTypes.CHANGE_EMAIL:
@@ -31,11 +32,6 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         ...state,
         password: action.payload,
       };
-    case loginActionTypes.CHANGE_PASSWORD:
-      return {
-        ...state,
-        token: action.payload,
-      };
     case loginActionTypes.CHANGE_IS_LOGGED:
       return {
         ...state,
@@ -47,8 +43,8 @@ export default (state = INITIAL_STATE, action: ActionProps) => {
         email: '',
         password: '',
         token: '',
-        isLogged: false
-      }
+        isLogged: false,
+      };
     default:
       return state;
   }

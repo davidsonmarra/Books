@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import {
-  Container,
-  Loading
-} from './styles';
+import React from 'react';
+import { Container, Loading } from './styles';
 
 interface Props {
   isLoading: boolean;
 }
 
 export default function ListFooter({ isLoading }: Props) {
-  return (
-    <Container>
-      {isLoading && <Loading />}
-    </Container>
-  );
+  return <Container>{isLoading && <Loading />}</Container>;
 }

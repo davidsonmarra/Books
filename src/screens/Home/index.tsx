@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Keyboard } from 'react-native';
 import TitleSvg from '../../assets/title-dark.svg';
 import LogoutSvg from '../../assets/logout.svg';
 import {
@@ -10,20 +13,25 @@ import {
   Logo,
   LogoutButton,
   Search,
-  Title
+  Title,
 } from './styles';
 import { SearchInput } from '../../components/form/SearchInput';
-import { useSelector } from 'react-redux';
 import { IRootState, useAppDispatch } from '../../store';
-import { fetchBooks, handleSearchTitle, reset } from '../../store/actions/booksActions';
+import {
+  fetchBooks,
+  handleSearchTitle,
+  reset,
+} from '../../store/actions/booksActions';
 import { CardBook } from '../../components/CardBook';
 import ListFooter from '../../components/ListFooter';
 import { FilterModal } from '../../components/FilterModal';
 import { logout } from '../../store/actions/loginActions';
 import { AuthRootStackParamList } from '../../routes/auth.routes';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Keyboard } from 'react-native';
 
+export interface CategoryProps {
+  key: string;
+  title: string;
+}
 export interface BookDTO {
   id: string;
   title: string;
@@ -36,31 +44,22 @@ export interface BookDTO {
   language: string;
   isbn10: string;
   isbn13: string;
-  description: string
+  description: string;
 }
 
-export interface CategoryProps {
-  key: string;
-  title: string;
-}
-
-type Props = NativeStackScreenProps<AuthRootStackParamList, 'Home'>
+type Props = NativeStackScreenProps<AuthRootStackParamList, 'Home'>;
 
 export function Home({ navigation }: Props) {
   const [searchInput, setSearchInput] = useState('');
   const [offset, setOffset] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useAppDispatch();
-  const {
-    search,
-    is_end,
-    books,
-    loading_fetch_books,
-    category
-  } = useSelector(({ booksReducer }: IRootState ) => booksReducer);
+  const { search, isEnd, books, loadingFetchBooks, category } = useSelector(
+    ({ booksReducer }: IRootState) => booksReducer
+  );
 
   function onEndReached() {
-    if(!is_end) {
+    if (!isEnd) {
       dispatch(fetchBooks(offset + 1, category, search));
       setOffset(offset + 1);
     }
@@ -69,7 +68,7 @@ export function Home({ navigation }: Props) {
   function handleSearch() {
     Keyboard.dismiss();
     dispatch(handleSearchTitle(searchInput));
-    setOffset(1)
+    setOffset(1);
     dispatch(fetchBooks(1, category, searchInput));
   }
 
@@ -97,39 +96,40 @@ export function Home({ navigation }: Props) {
           <Logo />
           <TitleSvg />
         </Title>
-        <LogoutButton onPress={handleLogout}>
+        <LogoutButton onPress={() => handleLogout()}>
           <LogoutSvg />
         </LogoutButton>
       </Header>
       <Search>
-        <SearchInput 
+        <SearchInput
           name="book"
-          placeholder='Procure um livro'
+          placeholder="Procure um livro"
           value={searchInput}
           onChangeText={setSearchInput}
-          onSubmit={handleSearch}
+          onSubmit={() => handleSearch()}
         />
-        <FilterButton onPress={handleModal}>     
+        <FilterButton onPress={() => handleModal()}>
           <Filter />
         </FilterButton>
       </Search>
       <List
         data={books}
         keyExtractor={(item) => `${item.id}`}
-        refreshing={loading_fetch_books}
+        refreshing={loadingFetchBooks}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <CardBook data={item} handleGoToBookDetails={(book) => handleGoToBookDetails(book)} />
+          <CardBook
+            data={item}
+            handleGoToBookDetails={(book) => handleGoToBookDetails(book)}
+          />
         )}
-        onEndReached={onEndReached}
+        onEndReached={() => onEndReached()}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={() => (
-          <ListFooter isLoading={loading_fetch_books} />
-        )}
+        ListFooterComponent={() => <ListFooter isLoading={loadingFetchBooks} />}
       />
-      <FilterModal 
+      <FilterModal
         visible={modalVisible}
-        handleModal={handleModal}
+        handleModal={() => handleModal()}
         setOffset={setOffset}
       />
     </Container>

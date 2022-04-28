@@ -27,19 +27,22 @@ interface Props extends ModalProps {
 }
 
 export function FilterModal({ visible, handleModal, setOffset }: Props) {
-  const [category, setCategory] = useState<CategoryProps>({key: '', title: ''});
+  const [category, setCategory] = useState<CategoryProps>({
+    key: '',
+    title: '',
+  });
   const dispatch = useAppDispatch();
-  const {
-    search
-  } = useSelector(({ booksReducer }: IRootState ) => booksReducer);
-  
+  const { search } = useSelector(
+    ({ booksReducer }: IRootState) => booksReducer
+  );
+
   function handleSelectCategory(cat: CategoryProps) {
-    if(category.key === cat.key) {
-      setCategory({key: '', title: ''});
+    if (category.key === cat.key) {
+      setCategory({ key: '', title: '' });
     } else {
       setCategory(cat);
     }
-  }; 
+  }
 
   function submit() {
     setOffset(1);
@@ -65,24 +68,24 @@ export function FilterModal({ visible, handleModal, setOffset }: Props) {
           <Category>
             <CategoryTitle>Selecione a categoria</CategoryTitle>
             <Categories>
-              {
-                categories.map(item => (
-                  <CategoryButton 
-                    isSelected={item.key === category.key} 
-                    onPress={() => handleSelectCategory(item)} 
-                    key={item.key}
-                  >
-                    <CategoryName isSelected={item.key === category.key}>{item.title}</CategoryName>
-                  </CategoryButton>
-                ))
-              }
+              {categories.map((item) => (
+                <CategoryButton
+                  isSelected={item.key === category.key}
+                  onPress={() => handleSelectCategory(item)}
+                  key={item.key}
+                >
+                  <CategoryName isSelected={item.key === category.key}>
+                    {item.title}
+                  </CategoryName>
+                </CategoryButton>
+              ))}
             </Categories>
           </Category>
-          <Submit onPress={submit}>
+          <Submit onPress={() => submit()}>
             <SubmitText>Filtrar</SubmitText>
           </Submit>
         </Content>
       </ContentContainer>
-    </Container>  
+    </Container>
   );
 }
