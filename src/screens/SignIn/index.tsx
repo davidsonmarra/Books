@@ -53,6 +53,7 @@ export function SignIn({}: Props) {
                     placeholder='Email'
                     autoCorrect={false}
                     value={email}
+                    autoCapitalize='none'
                     onChangeText={(text) => dispatch(setEmail(text))}
                   />
                   <Input 
@@ -60,6 +61,7 @@ export function SignIn({}: Props) {
                     placeholder='Senha'
                     secureTextEntry
                     autoCorrect={false}
+                    autoCapitalize='none'
                     value={password}
                     onChangeText={(text) => dispatch(setPassword(text))}
                   />
