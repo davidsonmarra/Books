@@ -1,7 +1,5 @@
 import axios from 'axios';
 import callbackRequest from './interceptors/callbacks/request/request';
-import callbackRequestError from './interceptors/callbacks/request/requestError';
-import callbackResponseError from './interceptors/callbacks/response/responseError';
 
 const createApiService = (
   baseURL: string,
@@ -18,13 +16,8 @@ const createApiService = (
   });
 
   api.interceptors.request.use(
-    (config) => callbackRequest(config),
-    // (error) => callbackRequestError(error)
+    (config) => callbackRequest(config)
   );
-  // api.interceptors.response.use(
-  //   (response) => response,
-  //   (error) => callbackResponseError(error)
-  // );
 
   return api;
 };
