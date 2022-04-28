@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ModalProps } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CategoryProps } from '../../screens/Home';
-import { IRootState } from '../../store';
+import { IRootState, useAppDispatch } from '../../store';
 import { fetchBooks, selectCategory } from '../../store/actions/booksActions';
 import { categories } from '../../utils/categories';
 import {
@@ -28,7 +28,7 @@ interface Props extends ModalProps {
 
 export function FilterModal({ visible, handleModal, setOffset }: Props) {
   const [category, setCategory] = useState<CategoryProps>({key: '', title: ''});
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     search
   } = useSelector(({ booksReducer }: IRootState ) => booksReducer);

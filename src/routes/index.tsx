@@ -4,13 +4,14 @@ import { PublicRoutes } from './public.routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../constants';
 import api from '../services/api';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setIsLogged, setToken } from '../store/actions/loginActions';
-import { IRootState } from '../store';
+import { IRootState, useAppDispatch } from '../store';
 import { AuthRoutes } from './auth.routes';
 
+
 export function Routes() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     isLogged
   } = useSelector(({ loginReducer }: IRootState) => loginReducer);
@@ -27,9 +28,9 @@ export function Routes() {
           }
         });
         const id = await AsyncStorage.getItem(constants.asyncStorageUserId);
-        dispatch(setToken(headers.authorization, id, headers['refresh-token']));
+        dispatch(setToken(headers.authorization, id!, headers['refresh-token']));
         dispatch(setIsLogged(true));
-      } catch (error) {
+      } catch (error: any) {
         console.log(error.response);
       }
     }

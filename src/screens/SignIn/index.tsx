@@ -3,13 +3,13 @@ import TitleSvg from '../../assets/title.svg';
 import { Input } from '../../components/form/Input';
 import {
   Container,
-  Image,
+  Background,
   Title,
   Logo,
   Form
 } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
+import { useSelector } from 'react-redux';
+import { IRootState, useAppDispatch } from '../../store';
 import { setEmail, setPassword } from '../../store/actions/loginActions';
 import { Keyboard, KeyboardAvoidingView, Platform, StatusBar, TouchableWithoutFeedback } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -23,7 +23,7 @@ export interface IFormInput {
 type Props = NativeStackScreenProps<PublicRootStackParamList, 'SignIn'>
 
 export function SignIn({}: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     email,
     password,
@@ -37,36 +37,35 @@ export function SignIn({}: Props) {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <Container>
-              <StatusBar
-                barStyle='light-content'
-                backgroundColor='transparent'
-                translucent
-              />
-              <Image source={require(background)}>
-                <Title>
-                  <Logo />
-                  <TitleSvg />
-                </Title>
-                <Form>
-                  <Input 
-                    name='email'
-                    placeholder='Email'
-                    autoCorrect={false}
-                    value={email}
-                    autoCapitalize='none'
-                    onChangeText={(text) => dispatch(setEmail(text))}
-                  />
-                  <Input 
-                    name='password'
-                    placeholder='Senha'
-                    secureTextEntry
-                    autoCorrect={false}
-                    autoCapitalize='none'
-                    value={password}
-                    onChangeText={(text) => dispatch(setPassword(text))}
-                  />
-                </Form>
-              </Image>
+          <StatusBar
+            barStyle='light-content'
+            backgroundColor='transparent'
+            translucent
+          />
+          <Background source={require(background)} />
+          <Title>
+            <Logo />
+            <TitleSvg />
+          </Title>
+          <Form>
+            <Input 
+              name='email'
+              placeholder='Email'
+              autoCorrect={false}
+              value={email}
+              autoCapitalize='none'
+              onChangeText={(text) => dispatch(setEmail(text))}
+            />
+            <Input 
+              name='password'
+              placeholder='Senha'
+              secureTextEntry
+              autoCorrect={false}
+              autoCapitalize='none'
+              value={password}
+              onChangeText={(text) => dispatch(setPassword(text))}
+            />
+          </Form>
         </Container>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
