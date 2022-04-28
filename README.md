@@ -61,6 +61,8 @@ $ expo start
   <li>Axios: para a realização da integração com as APIs.</li>
   <li>Redux: para o gerenciamento de estados globais na aplicação.</li>
   <li>Async Storage: para armazenar dados como: id do usuário, e os tokens de autorização e de refresh.</li>
+  <li>ESLint: para manter a formatação de código padrão.</li>
+  <li>Prettier: para formatar o código. Trabalha em conjunto com o ESlint para manter a formatação.</li>
 </ul>
 
 <h3 id="autor">Autor</h3>
