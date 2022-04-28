@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Alert, Keyboard, TouchableOpacityProps } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import api from '../../../services/api';
-import { IRootState } from '../../../store';
+import { IRootState, useAppDispatch } from '../../../store';
 import { setIsLogged, setToken } from '../../../store/actions/loginActions';
 import {
   Container,
@@ -12,7 +12,7 @@ import {
 
 export function Button({}: TouchableOpacityProps) {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     email,
     password,

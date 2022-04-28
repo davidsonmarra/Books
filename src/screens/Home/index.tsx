@@ -13,8 +13,8 @@ import {
   Title
 } from './styles';
 import { SearchInput } from '../../components/form/SearchInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
+import { useSelector } from 'react-redux';
+import { IRootState, useAppDispatch } from '../../store';
 import { fetchBooks, handleSearchTitle, reset } from '../../store/actions/booksActions';
 import { CardBook } from '../../components/CardBook';
 import ListFooter from '../../components/ListFooter';
@@ -50,7 +50,7 @@ export function Home({ navigation }: Props) {
   const [searchInput, setSearchInput] = useState('');
   const [offset, setOffset] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     search,
     is_end,
