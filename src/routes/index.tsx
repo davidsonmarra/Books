@@ -1,36 +1,42 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { PublicRoutes } from './public.routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
+import { PublicRoutes } from './public.routes';
 import constants from '../constants';
 import api from '../services/api';
-import { useSelector } from 'react-redux';
 import { setIsLogged, setToken } from '../store/actions/loginActions';
 import { IRootState, useAppDispatch } from '../store';
 import { AuthRoutes } from './auth.routes';
 
-
 export function Routes() {
   const dispatch = useAppDispatch();
-  const {
-    isLogged
-  } = useSelector(({ loginReducer }: IRootState) => loginReducer);
+  const { isLogged } = useSelector(
+    ({ loginReducer }: IRootState) => loginReducer
+  );
 
   async function refreshToken() {
     const token = await AsyncStorage.getItem(constants.asyncStorageUserRefresh);
-    if(!!token) {
+    if (token) {
       try {
-        const { headers } = await api.post('/auth/refresh-token', {
-          refreshToken: token
-        }, {
-          headers: {
-            Authorization: 'Bearer ' + token
+        const { headers } = await api.post(
+          '/auth/refresh-token',
+          {
+            refreshToken: token,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         const id = await AsyncStorage.getItem(constants.asyncStorageUserId);
-        dispatch(setToken(headers.authorization, id!, headers['refresh-token']));
+        dispatch(
+          setToken(headers.authorization, id!, headers['refresh-token'])
+        );
         dispatch(setIsLogged(true));
       } catch (error: any) {
+        /* eslint no-console: [0] */
         console.log(error.response);
       }
     }
@@ -38,12 +44,11 @@ export function Routes() {
 
   useEffect(() => {
     refreshToken();
-  }, [])
+  }, []);
 
   return (
     <NavigationContainer>
-      {
-        isLogged ? <AuthRoutes /> : <PublicRoutes />}
+      {isLogged ? <AuthRoutes /> : <PublicRoutes />}
     </NavigationContainer>
   );
 }

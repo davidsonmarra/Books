@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import CloseSvg from '../../assets/close.svg';
 import { RFValue } from 'react-native-responsive-fontsize';
+import CloseSvg from '../../assets/close.svg';
 
 interface Props {
   isSelected: boolean;
@@ -40,10 +40,9 @@ export const CloseButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-
 export const Close = styled(CloseSvg).attrs({
   width: RFValue(16),
-  height: RFValue(16)
+  height: RFValue(16),
 })``;
 
 export const Category = styled.View``;
@@ -65,13 +64,15 @@ export const CategoryButton = styled.TouchableOpacity<Props>`
   border-radius: ${RFValue(44)}px;
   margin-right: ${RFValue(8)}px;
   margin-bottom: ${RFValue(8)}px;
-  background-color: ${({ theme, isSelected }) => isSelected ? theme.colors.dark : theme.colors.shape};
+  background-color: ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.dark : theme.colors.shape};
 `;
 
 export const CategoryName = styled.Text<Props>`
   font-size: ${RFValue(12)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme, isSelected }) => !isSelected ? theme.colors.dark : theme.colors.shape};
+  color: ${({ theme, isSelected }) =>
+    !isSelected ? theme.colors.dark : theme.colors.shape};
 `;
 
 export const Submit = styled.TouchableOpacity`

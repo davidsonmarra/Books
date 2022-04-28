@@ -4,21 +4,20 @@ import { SignIn } from '../screens/SignIn';
 
 export type PublicRootStackParamList = {
   SignIn: undefined;
-}
+};
 
-const { Navigator, Screen } = createNativeStackNavigator<PublicRootStackParamList>();
+const { Navigator, Screen }: any =
+  createNativeStackNavigator<PublicRootStackParamList>();
 
 export function PublicRoutes() {
   return (
     <Navigator
       screenOptions={{
-        headerShown: false
+        headerShown: false,
       }}
-    > 
-      <Screen
-        name="SignIn"
-        component={SignIn}
-      />
+      initialRouteName="SignIn"
+    >
+      <Screen name="SignIn" component={SignIn} />
     </Navigator>
   );
 }

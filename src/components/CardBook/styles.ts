@@ -1,12 +1,9 @@
-import { Dimensions } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 interface Props {
   isLast: boolean;
 }
-
-const { width } = Dimensions.get('window');
 
 export const Wrapper = styled.View`
   width: 100%;

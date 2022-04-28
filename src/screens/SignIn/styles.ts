@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import LogoSvg from '../../assets/logo.svg';
 
-
 export const Container = styled.View`
   flex: 1;
   justify-content: center;
@@ -28,4 +27,3 @@ export const Title = styled.View`
 `;
 
 export const Form = styled.View``;
-

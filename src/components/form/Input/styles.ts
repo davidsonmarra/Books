@@ -25,6 +25,6 @@ export const Placeholder = styled.Text`
   left: ${RFValue(16)}px;
   top: ${RFValue(8)}px;
   color: ${({ theme }) => theme.colors.shape};
-  opacity: .5;
+  opacity: 0.5;
   font-family: ${({ theme }) => theme.fonts.regular};
 `;

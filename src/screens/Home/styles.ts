@@ -1,8 +1,8 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { FlatList, FlatListProps } from 'react-native';
 import LogoSvg from '../../assets/logo-dark.svg';
 import FilterSvg from '../../assets/filter.svg';
-import { FlatList, FlatListProps } from 'react-native';
 import { BookDTO } from '.';
 
 export const Container = styled.View`
@@ -48,14 +48,15 @@ export const FilterButton = styled.TouchableOpacity``;
 
 export const Filter = styled(FilterSvg).attrs({
   width: RFValue(24),
-  height: RFValue(24)
+  height: RFValue(24),
 })``;
 
 export const List = styled(
-  FlatList as new (props: FlatListProps<BookDTO>
-) => (FlatList<BookDTO>)).attrs({
+  /* eslint no-unused-vars: [0] */
+  FlatList as new (props: FlatListProps<BookDTO>) => FlatList<BookDTO>
+).attrs({
   contentContainerStyle: {
     paddingBottom: RFValue(24),
     alignItems: 'center',
-  }
+  },
 })``;

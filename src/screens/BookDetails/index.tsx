@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
+import React from 'react';
 import { AuthRootStackParamList } from '../../routes/auth.routes';
 import {
   Back,
@@ -15,10 +15,10 @@ import {
   InfoKey,
   Info,
   InfoValue,
-  Quote
+  Quote,
 } from './styles';
 
-type Props = NativeStackScreenProps<AuthRootStackParamList, 'BookDetails'>
+type Props = NativeStackScreenProps<AuthRootStackParamList, 'BookDetails'>;
 
 export default function BookDetails({ navigation, route }: Props) {
   const { book } = route.params;
@@ -30,22 +30,21 @@ export default function BookDetails({ navigation, route }: Props) {
   return (
     <Container>
       <Header>
-        <BackButton onPress={handleGoBack}>
+        <BackButton onPress={() => handleGoBack()}>
           <Back />
         </BackButton>
       </Header>
       <Content showsVerticalScrollIndicator={false}>
-        <BookImage source={{ uri: book.imageUrl }}/>
+        <BookImage source={{ uri: book.imageUrl }} />
         <Title numberOfLines={2}>{book.title}</Title>
         <Authors>
-        {
-          book.authors?.map((author, index) => (
+          {book.authors?.map((author, index) => (
             <Author key={author} isLast={index !== book.authors?.length - 1}>
               {author}
+              {/* eslint no-unsafe-optional-chaining: [0] */}
               {index !== book.authors?.length - 1 && ','}
             </Author>
-          ))
-        }
+          ))}
         </Authors>
         <InfoTitle>Informações</InfoTitle>
         <Info>

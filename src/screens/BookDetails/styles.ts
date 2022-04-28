@@ -30,8 +30,8 @@ export const Back = styled(BackSvg)``;
 
 export const Content = styled.ScrollView.attrs({
   contentContainerStyle: {
-    paddingBottom: RFValue(16)
-  }
+    paddingBottom: RFValue(16),
+  },
 })`
   padding: 0 ${RFValue(40 - 16)}px;
 `;
@@ -61,7 +61,7 @@ export const Authors = styled.View`
 `;
 
 export const Author = styled.Text<Props>`
-  margin-right: ${({ isLast }) => isLast ? RFValue(4) : 0}px;
+  margin-right: ${({ isLast }) => (isLast ? RFValue(4) : 0)}px;
   font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.button};
   font-family: ${({ theme }) => theme.fonts.regular};
