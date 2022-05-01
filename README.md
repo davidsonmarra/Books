@@ -16,11 +16,11 @@
  <a href="#autor">Autor</a>
 </p>
 
-<h3 id="sobre">Sobre</h3>
+<h2 id="sobre">🧾 Sobre</h2>
 <p>Este projeto foi desenvolvido em React Native como solução de um desafio técnico! 👨‍💻</p>
 <p>Essa é uma aplicação de listagem de livros, onde é possível visualizar diversos livros em uma estrutura de Scroll Infinito. Além disso é possível pesquisar por um livro específico (pelo nome), filtrar por categoria e muito mais. Além disso ainda possui login de usuário e persistência de login, ou seja, uma vez logado o usuário pode fechar o app que o mesmo abrirá logado.</p>
 
-<h3 id="funcionalidades">Funcionalidades</h3>
+<h2 id="funcionalidades">⚙Funcionalidades</h2>
 <ul>
   <li>Listagens de Livros</li>
   <li>Scroll infinito (Carregar Mais)</li>
@@ -31,14 +31,14 @@
   <li>Persistência do login</li>
 </ul>
 
-<h3 id="resultado">Resultado</h3>
+<h2 id="resultado">📱 Resultado</h2>
 <div align="center">
  
   https://user-images.githubusercontent.com/80720221/165673679-1dca3399-68da-4ff4-8d9a-e92e391c7d37.mp4
   
 </div>
 
-<h3 id="executar">Como executar</h3>
+<h2 id="executar">💻 Como executar</h2>
 
 ```bash
 # Clone este repositório
@@ -53,7 +53,7 @@ $ expo start
 ```
 
 ---
-<h3 id="libs">Bibliotecas Utilizadas</h3>
+<h2 id="libs">📚 Bibliotecas Utilizadas</h2>
 <p>Foram utilizadas diversas bibliotecas nesse projeto, mas as principais foram:</p>
 <ul>
   <li>Expo: ferramenta utilizada para facilitar o desenvolvimento com React Native.</li>
@@ -65,7 +65,7 @@ $ expo start
   <li>Prettier: para formatar o código. Trabalha em conjunto com o ESlint para manter a formatação.</li>
 </ul>
 
-<h3 id="autor">Autor</h3>
+<h2 id="autor">👨‍💻 Autor</h2>
 <table>
   <tr>
     <td align="center">
