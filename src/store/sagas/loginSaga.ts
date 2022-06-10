@@ -8,7 +8,7 @@ interface Props {
     token: string;
     id: string;
     refresh: string;
-  }
+  };
 }
 
 async function store(key: string, value: string) {
@@ -19,18 +19,17 @@ async function store(key: string, value: string) {
   }
 }
 
-export function* setToken
-  ({ payload }: Props) {
-    yield call(store, constants.asyncStorageUserKey, payload.token);
-    yield call(store, constants.asyncStorageUserId, payload.id);
-    yield call(store, constants.asyncStorageUserRefresh, payload.refresh);
-  };
+export function* setToken({ payload }: Props) {
+  yield call(store, constants.asyncStorageUserKey, payload.token);
+  yield call(store, constants.asyncStorageUserId, payload.id);
+  yield call(store, constants.asyncStorageUserRefresh, payload.refresh);
+}
 
 async function clearUserData() {
   await AsyncStorage.removeItem(constants.asyncStorageUserKey);
   await AsyncStorage.removeItem(constants.asyncStorageUserId);
   await AsyncStorage.removeItem(constants.asyncStorageUserRefresh);
-};
+}
 
 export default function* watcher() {
   yield takeLatest(CHANGE_TOKEN, setToken);

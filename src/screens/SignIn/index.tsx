@@ -21,9 +21,7 @@ export interface IFormInput {
 
 export function SignIn() {
   const dispatch = useDispatch();
-  const { email, password } = useSelector(
-    ({ login }: IRootState) => login
-  );
+  const { email, password } = useSelector(({ login }: IRootState) => login);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

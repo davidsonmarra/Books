@@ -32,9 +32,7 @@ export function FilterModal({ visible, handleModal, setOffset }: Props) {
     title: '',
   });
   const dispatch = useDispatch();
-  const { search } = useSelector(
-    ({ books }: IRootState) => books
-  );
+  const { search } = useSelector(({ books }: IRootState) => books);
 
   function handleSelectCategory(cat: CategoryProps) {
     if (category.key === cat.key) {

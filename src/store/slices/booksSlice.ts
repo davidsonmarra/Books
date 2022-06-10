@@ -5,7 +5,7 @@ interface Props {
   isEnd: boolean;
   loadingFetchBooks: boolean;
   error_fetch_books: string;
-  books: BookDTO[];
+  booksData: BookDTO[];
   category: CategoryProps;
   search: string;
 }
@@ -14,7 +14,7 @@ const initialState: Props = {
   isEnd: false,
   loadingFetchBooks: false,
   error_fetch_books: '',
-  books: [],
+  booksData: [],
   category: { key: '', title: '' },
   search: '',
 };
@@ -23,13 +23,17 @@ const counterSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    FETCH_BOOKS: (state, { payload }) => ({ ...state, loadingFetchBooks: true, error_fetch_books: '' }),
+    FETCH_BOOKS: (state, { payload }) => ({
+      ...state,
+      loadingFetchBooks: true,
+      error_fetch_books: '',
+    }),
     FETCH_BOOKS_SUCCESS: (state, { payload }) => ({
       ...state,
       isEnd: payload?.length < 15,
       loadingFetchBooks: false,
       error_fetch_books: '',
-      books: state.books.concat(payload),
+      booksData: state.booksData.concat(payload),
     }),
     FETCH_BOOKS_ERROR: (state, { payload }) => ({
       ...state,
@@ -39,33 +43,33 @@ const counterSlice = createSlice({
     SET_CATEGORY: (state, { payload }) => ({
       ...state,
       category: payload,
-      books: [],
+      booksData: [],
     }),
     SET_SEARCH: (state, { payload }) => ({
       ...state,
       search: payload,
-      books: [],
+      booksData: [],
     }),
     RESET_BOOKS: (state) => ({
       ...state,
       isEnd: false,
       loadingFetchBooks: false,
       error_fetch_books: '',
-      books: [],
+      booksData: [],
       category: { key: '', title: '' },
       search: '',
     }),
-  }
+  },
 });
 
 const { actions, reducer } = counterSlice;
 
-export const { 
-  FETCH_BOOKS, 
-  FETCH_BOOKS_SUCCESS, 
+export const {
+  FETCH_BOOKS,
+  FETCH_BOOKS_SUCCESS,
   FETCH_BOOKS_ERROR,
   SET_CATEGORY,
   SET_SEARCH,
-  RESET_BOOKS
+  RESET_BOOKS,
 } = actions;
 export default reducer;

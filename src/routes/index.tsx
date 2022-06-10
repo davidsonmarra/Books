@@ -11,9 +11,7 @@ import { CHANGE_IS_LOGGED, CHANGE_TOKEN } from '../store/slices/loginSlice';
 
 export function Routes() {
   const dispatch = useDispatch();
-  const { isLogged } = useSelector(
-    ({ login }: IRootState) => login
-  );
+  const { isLogged } = useSelector(({ login }: IRootState) => login);
 
   async function refreshToken() {
     const token = await AsyncStorage.getItem(constants.asyncStorageUserRefresh);
@@ -32,7 +30,11 @@ export function Routes() {
         );
         const id = await AsyncStorage.getItem(constants.asyncStorageUserId);
         dispatch(
-          CHANGE_TOKEN({ token: headers.authorization, id: id!, refresh: headers['refresh-token'] })
+          CHANGE_TOKEN({
+            token: headers.authorization,
+            id: id!,
+            refresh: headers['refresh-token'],
+          })
         );
         dispatch(CHANGE_IS_LOGGED(true));
       } catch (error: any) {

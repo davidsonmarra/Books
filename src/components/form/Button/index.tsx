@@ -3,17 +3,18 @@ import { Alert, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../../services/api';
 import { IRootState } from '../../../store/store';
-import { CHANGE_IS_LOGGED, CHANGE_TOKEN } from '../../../store/slices/loginSlice';
+import {
+  CHANGE_IS_LOGGED,
+  CHANGE_TOKEN,
+} from '../../../store/slices/loginSlice';
 import { Container, Loading, Title } from './styles';
 
 export function Button() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const { email, password } = useSelector(
-    ({ login }: IRootState) => login
-  );
+  const { email, password } = useSelector(({ login }: IRootState) => login);
 
-  async function login() {
+  async function handleLogin() {
     // 'desafio@ioasys.com.br'
     // '12341234'
     setLoading(true);
@@ -25,7 +26,11 @@ export function Button() {
         password,
       });
       dispatch(
-        CHANGE_TOKEN({ token: headers.authorization, id: data.id, refresh: headers['refresh-token']})
+        CHANGE_TOKEN({
+          token: headers.authorization,
+          id: data.id,
+          refresh: headers['refresh-token'],
+        })
       );
       setLoading(false);
       dispatch(CHANGE_IS_LOGGED(true));
@@ -39,7 +44,7 @@ export function Button() {
   }
 
   return (
-    <Container onPress={() => login()}>
+    <Container onPress={() => handleLogin()}>
       {loading ? <Loading /> : <Title>Entrar</Title>}
     </Container>
   );

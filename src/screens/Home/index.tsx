@@ -20,7 +20,11 @@ import { CardBook } from '../../components/CardBook';
 import ListFooter from '../../components/ListFooter';
 import { FilterModal } from '../../components/FilterModal';
 import { AuthRootStackParamList } from '../../routes/auth.routes';
-import { FETCH_BOOKS, RESET_BOOKS, SET_SEARCH } from '../../store/slices/booksSlice';
+import {
+  FETCH_BOOKS,
+  RESET_BOOKS,
+  SET_SEARCH,
+} from '../../store/slices/booksSlice';
 import { IRootState } from '../../store/store';
 import { RESET } from '../../store/slices/loginSlice';
 
@@ -50,7 +54,7 @@ export function Home({ navigation }: Props) {
   const [offset, setOffset] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
-  const { search, isEnd, books, loadingFetchBooks, category } = useSelector(
+  const { search, isEnd, booksData, loadingFetchBooks, category } = useSelector(
     ({ books }: IRootState) => books
   );
 
@@ -109,7 +113,7 @@ export function Home({ navigation }: Props) {
         </FilterButton>
       </Search>
       <List
-        data={books}
+        data={booksData}
         keyExtractor={(item) => `${item.id}`}
         refreshing={loadingFetchBooks}
         showsVerticalScrollIndicator={false}
