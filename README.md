@@ -2,7 +2,7 @@
 ![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
-[![Build status](https://build.appcenter.ms/v0.1/apps/c0287317-1e15-4292-b278-35cabeb8fb50/branches/feature-change-thunk-to-saga/badge)](https://appcenter.ms)
+[![Build status](https://build.appcenter.ms/v0.1/apps/c0287317-1e15-4292-b278-35cabeb8fb50/branches/master/badge)](https://appcenter.ms)
 <div align="center" >
   <img align="center" alt="Logo do app" src="./src/assets/logo.svg">
   <img align="center" alt="Logo do app" src="./src/assets/title.svg">
