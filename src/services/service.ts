@@ -11,7 +11,7 @@ const createApiService = (baseURL: string, timeout: number, headers: any) => {
     },
   });
 
-  api.interceptors.request.use((config) => callbackRequest(config));
+  api.interceptors.request.use(config => callbackRequest(config));
 
   return api;
 };

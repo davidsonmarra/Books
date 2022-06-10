@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { BookDTO, CategoryProps } from '../../screens/Home';
+import BookDTO from '../../@types/BookDTO';
+import { CategoryProps } from '../../@types/CategoryProps';
 
 interface Props {
   isEnd: boolean;
@@ -23,6 +24,7 @@ const counterSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
+    /* eslint no-unused-vars: [0] */
     FETCH_BOOKS: (state, { payload }) => ({
       ...state,
       loadingFetchBooks: true,
@@ -50,7 +52,7 @@ const counterSlice = createSlice({
       search: payload,
       booksData: [],
     }),
-    RESET_BOOKS: (state) => ({
+    RESET_BOOKS: state => ({
       ...state,
       isEnd: false,
       loadingFetchBooks: false,

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch, useSelector } from 'react-redux';
-import { PublicRoutes } from './public.routes';
+import { PublicRoutes } from './stacks/public.routes';
+import { AuthRoutes } from './stacks/auth.routes';
 import constants from '../constants';
 import api from '../services/api';
 import { IRootState } from '../store/store';
-import { AuthRoutes } from './auth.routes';
 import { CHANGE_IS_LOGGED, CHANGE_TOKEN } from '../store/slices/loginSlice';
 
 export function Routes() {
@@ -48,9 +48,5 @@ export function Routes() {
     refreshToken();
   }, []);
 
-  return (
-    <NavigationContainer>
-      {isLogged ? <AuthRoutes /> : <PublicRoutes />}
-    </NavigationContainer>
-  );
+  return <NavigationContainer>{isLogged ? <AuthRoutes /> : <PublicRoutes />}</NavigationContainer>;
 }

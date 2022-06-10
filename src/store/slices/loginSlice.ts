@@ -18,7 +18,7 @@ const loginSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    LOGIN: (state) => ({ ...state }),
+    LOGIN: state => ({ ...state }),
     CHANGE_EMAIL: (state, { payload }) => ({
       ...state,
       email: payload,
@@ -35,7 +35,7 @@ const loginSlice = createSlice({
       ...state,
       isLogged: payload,
     }),
-    RESET: (state) => ({
+    RESET: state => ({
       ...state,
       email: '',
       password: '',
@@ -47,12 +47,6 @@ const loginSlice = createSlice({
 
 const { actions, reducer } = loginSlice;
 
-export const {
-  LOGIN,
-  CHANGE_EMAIL,
-  CHANGE_PASSWORD,
-  CHANGE_TOKEN,
-  CHANGE_IS_LOGGED,
-  RESET,
-} = actions;
+export const { LOGIN, CHANGE_EMAIL, CHANGE_PASSWORD, CHANGE_TOKEN, CHANGE_IS_LOGGED, RESET } =
+  actions;
 export default reducer;

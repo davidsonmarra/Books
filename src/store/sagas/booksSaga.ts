@@ -1,11 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { CategoryProps } from '../../screens/Home';
+import { CategoryProps } from '../../@types/CategoryProps';
 import api from '../../services/api';
-import {
-  FETCH_BOOKS,
-  FETCH_BOOKS_SUCCESS,
-  FETCH_BOOKS_ERROR,
-} from '../slices/booksSlice';
+import { FETCH_BOOKS, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_ERROR } from '../slices/booksSlice';
 
 interface Props {
   payload: {
