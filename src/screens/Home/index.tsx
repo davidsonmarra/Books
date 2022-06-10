@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Keyboard } from 'react-native';
 import TitleSvg from '../../assets/title-dark.svg';
@@ -16,17 +16,13 @@ import {
   Title,
 } from './styles';
 import { SearchInput } from '../../components/form/SearchInput';
-import { IRootState, useAppDispatch } from '../../store';
-import {
-  fetchBooks,
-  handleSearchTitle,
-  reset,
-} from '../../store/actions/booksActions';
 import { CardBook } from '../../components/CardBook';
 import ListFooter from '../../components/ListFooter';
 import { FilterModal } from '../../components/FilterModal';
-import { logout } from '../../store/actions/loginActions';
 import { AuthRootStackParamList } from '../../routes/auth.routes';
+import { FETCH_BOOKS, RESET_BOOKS, SET_SEARCH } from '../../store/slices/booksSlice';
+import { IRootState } from '../../store/store';
+import { RESET } from '../../store/slices/loginSlice';
 
 export interface CategoryProps {
   key: string;
@@ -53,23 +49,24 @@ export function Home({ navigation }: Props) {
   const [searchInput, setSearchInput] = useState('');
   const [offset, setOffset] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const { search, isEnd, books, loadingFetchBooks, category } = useSelector(
-    ({ booksReducer }: IRootState) => booksReducer
+    ({ books }: IRootState) => books
   );
 
   function onEndReached() {
     if (!isEnd) {
-      dispatch(fetchBooks(offset + 1, category, search));
+      dispatch(FETCH_BOOKS({ offset: offset + 1, category, search }));
       setOffset(offset + 1);
     }
   }
 
   function handleSearch() {
     Keyboard.dismiss();
-    dispatch(handleSearchTitle(searchInput));
+    dispatch(RESET_BOOKS());
+    dispatch(SET_SEARCH(searchInput));
     setOffset(1);
-    dispatch(fetchBooks(1, category, searchInput));
+    dispatch(FETCH_BOOKS({ offset: 1, category, search: searchInput }));
   }
 
   function handleModal() {
@@ -77,8 +74,7 @@ export function Home({ navigation }: Props) {
   }
 
   function handleLogout() {
-    dispatch(logout());
-    dispatch(reset());
+    dispatch(RESET());
   }
 
   function handleGoToBookDetails(book: BookDTO) {
@@ -86,7 +82,7 @@ export function Home({ navigation }: Props) {
   }
 
   useEffect(() => {
-    dispatch(fetchBooks(offset, category, search));
+    dispatch(FETCH_BOOKS({ offset, category, search }));
   }, []);
 
   return (

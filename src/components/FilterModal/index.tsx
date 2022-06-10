@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ModalProps } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CategoryProps } from '../../screens/Home';
-import { IRootState, useAppDispatch } from '../../store';
-import { fetchBooks, selectCategory } from '../../store/actions/booksActions';
+import { FETCH_BOOKS, RESET_BOOKS } from '../../store/slices/booksSlice';
+import { IRootState } from '../../store/store';
 import { categories } from '../../utils/categories';
 import {
   Categories,
@@ -31,9 +31,9 @@ export function FilterModal({ visible, handleModal, setOffset }: Props) {
     key: '',
     title: '',
   });
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const { search } = useSelector(
-    ({ booksReducer }: IRootState) => booksReducer
+    ({ books }: IRootState) => books
   );
 
   function handleSelectCategory(cat: CategoryProps) {
@@ -45,9 +45,9 @@ export function FilterModal({ visible, handleModal, setOffset }: Props) {
   }
 
   function submit() {
+    dispatch(RESET_BOOKS());
     setOffset(1);
-    dispatch(selectCategory(category));
-    dispatch(fetchBooks(1, category, search));
+    dispatch(FETCH_BOOKS({ offset: 1, category, search }));
     handleModal();
   }
 

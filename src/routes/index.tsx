@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { PublicRoutes } from './public.routes';
 import constants from '../constants';
 import api from '../services/api';
-import { setIsLogged, setToken } from '../store/actions/loginActions';
-import { IRootState, useAppDispatch } from '../store';
+import { IRootState } from '../store/store';
 import { AuthRoutes } from './auth.routes';
+import { CHANGE_IS_LOGGED, CHANGE_TOKEN } from '../store/slices/loginSlice';
 
 export function Routes() {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const { isLogged } = useSelector(
-    ({ loginReducer }: IRootState) => loginReducer
+    ({ login }: IRootState) => login
   );
 
   async function refreshToken() {
@@ -32,9 +32,9 @@ export function Routes() {
         );
         const id = await AsyncStorage.getItem(constants.asyncStorageUserId);
         dispatch(
-          setToken(headers.authorization, id!, headers['refresh-token'])
+          CHANGE_TOKEN({ token: headers.authorization, id: id!, refresh: headers['refresh-token'] })
         );
-        dispatch(setIsLogged(true));
+        dispatch(CHANGE_IS_LOGGED(true));
       } catch (error: any) {
         /* eslint no-console: [0] */
         console.log(error.response);

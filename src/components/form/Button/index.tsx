@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Alert, Keyboard } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import api from '../../../services/api';
-import { IRootState, useAppDispatch } from '../../../store';
-import { setIsLogged, setToken } from '../../../store/actions/loginActions';
+import { IRootState } from '../../../store/store';
+import { CHANGE_IS_LOGGED, CHANGE_TOKEN } from '../../../store/slices/loginSlice';
 import { Container, Loading, Title } from './styles';
 
 export function Button() {
   const [loading, setLoading] = useState(false);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const { email, password } = useSelector(
-    ({ loginReducer }: IRootState) => loginReducer
+    ({ login }: IRootState) => login
   );
 
   async function login() {
@@ -25,10 +25,10 @@ export function Button() {
         password,
       });
       dispatch(
-        setToken(headers.authorization, data.id, headers['refresh-token'])
+        CHANGE_TOKEN({ token: headers.authorization, id: data.id, refresh: headers['refresh-token']})
       );
       setLoading(false);
-      dispatch(setIsLogged(true));
+      dispatch(CHANGE_IS_LOGGED(true));
     } catch (error: any) {
       setLoading(false);
       Alert.alert(
