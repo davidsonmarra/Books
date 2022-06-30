@@ -1,16 +1,9 @@
 {
     "env": {
-        "es2021": true
+        "jest": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "plugin:prettier/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript"
-    ],
-    "parser": "@typescript-eslint/parser",
+    "extends": ["airbnb", "plugin:prettier/recommended", "prettier", "plugin:import/typescript"],
+    "parser":"@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -21,11 +14,29 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "react-hooks"
     ],
+    "globals": {
+        "__DEV__": true,
+        "fetch": false
+    },
     "rules": {
-        "prettier/prettier": "error",
+        "react/jsx-props-no-spreading": [0],
+        "comma-dangle": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "import/prefer-default-export": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/prop-types": ["error", { "ignore": ["navigation"] }],
+        "react/state-in-constructor": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": ["external", ["internal", "sibling"]]
+            }
+        ],
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -36,14 +47,7 @@
               "tsx": "never"
             }
         ],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-        "import/no-cycle": [0],
-        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-        "react/no-unstable-nested-components": [
-            0,
-            { "allowAsProps": true }
-        ],
-        "react/jsx-props-no-spreading": [0]
+        "strict": 0
     },
     "settings": {
         "import/extensions": [

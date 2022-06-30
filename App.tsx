@@ -2,10 +2,10 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
+import AppLoading from 'expo-app-loading';
 import { Routes } from './src/routes';
 import theme from './src/global/styles/theme';
 import store from './src/store';
-import AppLoading from 'expo-app-loading';
 import {
   useFonts,
   Heebo_400Regular,
@@ -18,7 +18,7 @@ export default function App() {
     Heebo_500Medium,
   });
 
-  if(!fontsLoaded) 
+  if (!fontsLoaded)
     return <AppLoading />;
 
   return (
